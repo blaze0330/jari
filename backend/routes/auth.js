@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const fetchuser = require("../middleware/fetchuser");
 var jwt = require("jsonwebtoken");
-const Notes = require("../models/Notes");
+const Notes = require("../models/Tasks");
 
 const JWT_SECRET = "Ayushisabadb$oy";
 // registering user
@@ -22,7 +22,7 @@ router.post(
     let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      
+
       return res.status(400).json({ errors: errors.array() });
     }
     // check weather user with this email already exist
@@ -49,7 +49,7 @@ router.post(
       const authtoken = jwt.sign(data, JWT_SECRET);
       success = true
 
-      res.json({ success , authtoken });
+      res.json({ success, authtoken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");
@@ -87,7 +87,7 @@ router.post(
       if (!passwordCompare) {
         return res
           .status(400)
-          .json({ success,error: "please try to login with correct credentials" });
+          .json({ success, error: "please try to login with correct credentials" });
       }
       //   create user
 
@@ -100,7 +100,7 @@ router.post(
       const authtoken = jwt.sign(data, JWT_SECRET);
       success = true
 
-      res.json({ success , authtoken });
+      res.json({ success, authtoken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");
