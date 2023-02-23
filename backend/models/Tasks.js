@@ -16,7 +16,7 @@ const TasksSchema = new Schema({
     },
     completedCount: {
       type: Number,
-      required: true,
+      default : 0,
     },
     animationType: {
       type: Number,
