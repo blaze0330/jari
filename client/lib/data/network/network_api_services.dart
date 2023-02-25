@@ -24,13 +24,14 @@ class NetworkApiServices extends BaseApiServices {
 
       final response = await http.get(Uri.parse(url)).timeout( const Duration(seconds: 10));
       responseJson  = returnResponse(response) ;
-    }on SocketException {
-      throw InternetException('');
-    }on RequestTimeOut {
+    }catch (e) {
+        print(e);
+      if(e is SocketException){
+      // throw InternetException(e.message);
+      }
+      else
       throw RequestTimeOut('');
-
     }
-    print("hi" + responseJson);
     return responseJson ;
 
   }
@@ -52,11 +53,15 @@ class NetworkApiServices extends BaseApiServices {
         body: data
       ).timeout( const Duration(seconds: 10));
       responseJson  = returnResponse(response) ;
-    }on SocketException {
-      throw InternetException('');
-    }on RequestTimeOut {
+    }catch (e) {
+      if(e is SocketException){
+        print(e.toString());
+      throw InternetException(e.message);
+      }
+      else{
+        print(e);
       throw RequestTimeOut('');
-
+      }
     }
     if (kDebugMode) {
       print(responseJson);

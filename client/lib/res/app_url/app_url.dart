@@ -2,7 +2,7 @@
 
 class AppUrl {
 
-  static const String baseUrl = 'https://localhost:5000/api' ;
+  static const String baseUrl = 'https://192.168.137.195:5000/api' ;
   static const String loginApi = '$baseUrl/auth/login' ;
   static const String createUser = '$baseUrl/auth/createuser';
   static const String getUser = '$baseUrl/auth/getuser';
