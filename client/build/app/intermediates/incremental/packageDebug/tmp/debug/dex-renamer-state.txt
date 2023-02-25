@@ -1,4 +1,4 @@
-#Thu Feb 23 18:42:38 IST 2023
-base.0=/home/user/Desktop/jarify/client/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Fri Feb 24 22:24:54 IST 2023
+base.0=/home/ayush/Desktop/jarify/client/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

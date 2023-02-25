@@ -4,7 +4,7 @@
             "outputFile": "com.example.getx_mvvm.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/user/Desktop/jarify/client/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/home/ayush/Desktop/jarify/client/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
