@@ -10,18 +10,18 @@ class HomeController extends GetxController {
 
 
   final rxRequestStatus = Status.LOADING.obs ;
-  final userList =UserListModel().obs ;
+  RxList userList =[].obs ; // this is succesious
   RxString error = ''.obs;
 
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value ;
-  void setUserList(UserListModel _value) => userList.value = _value ;
+  void setUserList(List<Task> _value) => userList.value = _value ;
   void setError(String _value) => error.value = _value ;
 
 
   void userListApi(){
   //  setRxRequestStatus(Status.LOADING);
 
-    _api.userListApi().then((value){
+    _api.TaskList().then((value){
       setRxRequestStatus(Status.COMPLETED);
       setUserList(value);
     }).onError((error, stackTrace){
@@ -35,7 +35,7 @@ class HomeController extends GetxController {
 
       setRxRequestStatus(Status.LOADING);
 
-    _api.userListApi().then((value){
+    _api.TaskList().then((value){
       setRxRequestStatus(Status.COMPLETED);
       setUserList(value);
     }).onError((error, stackTrace){
