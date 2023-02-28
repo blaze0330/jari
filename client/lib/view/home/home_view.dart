@@ -58,15 +58,12 @@ class _HomeViewState extends State<HomeView> {
             }
           case Status.COMPLETED:
             return ListView.builder(
-              itemCount: homeController.userList.value.data!.length,
+              itemCount: homeController.userList.value!.length,
                 itemBuilder: (context, index){
                   return Card(
                     child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(homeController.userList.value.data![index].avatar.toString()),
-                      ),
-                      title: Text(homeController.userList.value.data![index].firstName.toString()),
-                      subtitle: Text(homeController.userList.value.data![index].email.toString()),
+                      
+                      title: Text(homeController.userList.value[index].title.toString()),
 
                     ),
                   );

@@ -9,10 +9,13 @@ import 'package:getx_mvvm/res/app_url/app_url.dart';
 class HomeRepository {
 
   final _apiService  = NetworkApiServices() ;
-
-  Future<UserListModel> userListApi() async{
-    dynamic response = await _apiService.getApi(AppUrl.userListApi);
-    return UserListModel.fromJson(response) ;
+  List<Task> taskList = [];
+  Future<List<Task>> TaskList() async{
+    dynamic response = await _apiService.getApi(AppUrl.fetchalltasks);
+    for (Map<String,dynamic> i in response) {
+      taskList.add(Task.fromJson(i));
+    }
+    return taskList ;
   }
 
 
