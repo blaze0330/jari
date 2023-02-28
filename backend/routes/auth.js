@@ -70,7 +70,8 @@ router.post(
     let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      console.log((errors.array()[0]['msg']))
+      return res.status(400).json({ success : false ,  error: errors.array()[0]['msg'] });
     }
     // check weather user with this email already exist
     const { email, password } = req.body;

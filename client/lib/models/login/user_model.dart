@@ -1,19 +1,19 @@
 class UserModel {
   String? token;
-  bool? isLogin ;
+  bool? success ;
 
-  UserModel({this.token , this.isLogin});
+  UserModel({this.token , this.success});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    token = json['token'];
-    isLogin = json['isLogin'];
+    this.token = json['authtoken'];
+    this.success = json['success'];
 
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['token'] = this.token;
-    data['isLogin'] = this.token;
+    data['authtoken'] = this.token;
+    data['success'] = this.success;
     return data;
   }
 }
