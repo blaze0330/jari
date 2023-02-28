@@ -16,9 +16,9 @@ class SplashServices {
     userPreference.getUser().then((value){
 
       print(value.token);
-      print(value.isLogin);
+      print(value.success);
 
-      if(value.isLogin == false || value.isLogin.toString() == 'null'){
+      if(value.success == false || value.success.toString() == 'null'){
         Timer(const Duration(seconds: 3) ,
                 () => Get.toNamed(RouteName.loginView) );
       }else {

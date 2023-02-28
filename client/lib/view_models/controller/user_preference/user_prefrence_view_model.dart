@@ -9,19 +9,19 @@ class UserPreference {
     Future<bool> saveUser(UserModel responseModel)async{
       SharedPreferences sp = await SharedPreferences.getInstance();
       sp.setString('token', responseModel.token.toString());
-      sp.setBool('isLogin', responseModel.isLogin!);
-
+      sp.setBool('success', responseModel.success!);
+      // print("saved user");
       return true ;
     }
 
     Future<UserModel> getUser()async{
       SharedPreferences sp = await SharedPreferences.getInstance();
       String? token = sp.getString('token');
-      bool? isLogin = sp.getBool('isLogin');
+      bool? success = sp.getBool('success');
 
       return UserModel(
         token: token ,
-        isLogin: isLogin
+        success: success
       ) ;
     }
 

@@ -15,9 +15,7 @@ class NetworkApiServices extends BaseApiServices {
   @override
   Future<dynamic> getApi(String url)async{
 
-    if (kDebugMode) {
-      print(url);
-    }
+    
 
     dynamic responseJson ;
     try {
@@ -40,31 +38,29 @@ class NetworkApiServices extends BaseApiServices {
   @override
   Future<dynamic> postApi(var data , String url)async{
 
-    if (kDebugMode) {
-      print(url);
-      print("hi");
-      print(data);
-    }
 
     dynamic responseJson ;
     try {
 
       final response = await http.post(Uri.parse(url),
-        body: data
+        body: data,
+        headers: {
+        "Content-Type": "application/json",
+      },
       ).timeout( const Duration(seconds: 10));
       responseJson  = returnResponse(response) ;
     }catch (e) {
       if(e is SocketException){
-        print(e.toString());
+        // print(e.toString());
       throw InternetException(e.message);
       }
       else{
-        print(e);
+        // print(e);
       throw RequestTimeOut('');
       }
     }
     if (kDebugMode) {
-      print(responseJson);
+      // print(responseJson);
     }
     print(responseJson);
     return responseJson ;
