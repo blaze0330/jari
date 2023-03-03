@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 
 import '../../../utils/utils.dart';
-import '../../../view_models/controller/login/login_view_model.dart';
 
-class InputEmailWidget<T> extends StatelessWidget {
+
+class InputNameWidget<T> extends StatelessWidget {
   final authVM;
-  InputEmailWidget({Key? key , required this.authVM}) : super(key: key);
+  const InputNameWidget({Key? key , this.authVM}) : super(key: key);
 
   
   
@@ -15,19 +13,19 @@ class InputEmailWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
-      controller: authVM.emailController.value,
-      focusNode: authVM.emailFocusNode.value,
+      controller: authVM.nameController.value,
+      focusNode: authVM.nameFocusNode.value,
 
       validator: (value){
         if(value!.isEmpty){
-          Utils.snackBar('Email', 'Enter email');
+          Utils.snackBar('Name', 'Enter name');
         }
       },
       onFieldSubmitted: (value){
         Utils.fieldFocusChange(context, authVM.emailFocusNode.value, authVM.passwordFocusNode.value);
       },
       decoration: InputDecoration(
-          hintText: 'email_hint'.tr,
+          hintText: 'Name',
           border: OutlineInputBorder()
       ),
     );

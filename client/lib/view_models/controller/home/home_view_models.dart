@@ -2,7 +2,7 @@
 import 'package:get/get.dart';
 import 'package:getx_mvvm/data/response/status.dart';
 import 'package:getx_mvvm/models/home/user_list_model.dart';
-import 'package:getx_mvvm/repository/home_repository/hone_repository.dart';
+import 'package:getx_mvvm/repository/home_repository/home_repository.dart';
 
 class HomeController extends GetxController {
 

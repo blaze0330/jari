@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_mvvm/data/response/status.dart';
+import 'package:getx_mvvm/repository/home_repository/home_repository.dart';
 import 'package:getx_mvvm/res/components/general_exception.dart';
 import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view_models/controller/user_preference/user_prefrence_view_model.dart';
@@ -37,6 +38,7 @@ class _HomeViewState extends State<HomeView> {
         actions: [
           IconButton(onPressed: (){
             userPreference.removeUser().then((value){
+              homeController.setUserList([]);
               Get.toNamed(RouteName.loginView);
             });
           }, icon: const Icon(Icons.logout))

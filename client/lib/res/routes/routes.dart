@@ -6,6 +6,8 @@ import 'package:getx_mvvm/view/home/home_view.dart';
 import 'package:getx_mvvm/view/login/login_view.dart';
 import 'package:getx_mvvm/view/splash_screen.dart';
 
+import '../../view/login/signup_view.dart';
+
 class AppRoutes {
 
   static appRoutes() => [
@@ -18,6 +20,12 @@ class AppRoutes {
     GetPage(
       name: RouteName.loginView,
       page: () => LoginView() ,
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade ,
+    ) ,
+    GetPage(
+      name: RouteName.signupView,
+      page: () => SignUpView() ,
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade ,
     ) ,

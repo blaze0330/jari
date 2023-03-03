@@ -7,15 +7,16 @@ import '../../../utils/utils.dart';
 import '../../../view_models/controller/login/login_view_model.dart';
 
 class InputPasswordWidget extends StatelessWidget {
-  InputPasswordWidget({Key? key}) : super(key: key);
+  final authVM;
+  InputPasswordWidget({Key? key , required this.authVM}) : super(key: key);
 
-  final loginVM = Get.put(LoginViewModel()) ;
+  
 
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
-      controller: loginVM.passwordController.value,
-      focusNode: loginVM.passwordFocusNode.value,
+      controller: authVM.passwordController.value,
+      focusNode: authVM.passwordFocusNode.value,
       obscureText: true,
       validator: (value){
         if(value!.isEmpty){

@@ -8,19 +8,22 @@ import '../../../view_models/controller/login/login_view_model.dart';
 
 class LoginButtonWidget extends StatelessWidget {
   final formKey ;
-   LoginButtonWidget({Key? key , required this.formKey}) : super(key: key);
+  String url;
+  String authText ;
+  final authVM ;
+   LoginButtonWidget({Key? key , required this.formKey , required this.authText , required this.url, required this.authVM}) : super(key: key);
 
-  final loginVM = Get.put(LoginViewModel()) ;
+  
 
   @override
   Widget build(BuildContext context) {
     return  Obx(() => RoundButton(
         width: 200,
-        title: 'login'.tr,
-        loading: loginVM.loading.value,
+        title: authText,
+        loading: authVM.loading.value,
         onPress: (){
           if(formKey.currentState!.validate()){
-            loginVM.loginApi();
+            authVM.authApi(url);
           }
         }
     ));

@@ -20,7 +20,7 @@ class SplashServices {
 
       if(value.success == false || value.success.toString() == 'null'){
         Timer(const Duration(seconds: 3) ,
-                () => Get.toNamed(RouteName.loginView) );
+                () => Get.toNamed(RouteName.signupView) );
       }else {
         Timer(const Duration(seconds: 3) ,
                 () => Get.toNamed(RouteName.homeView) );

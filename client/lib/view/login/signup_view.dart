@@ -1,31 +1,28 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_mvvm/data/response/api_response.dart';
 import 'package:getx_mvvm/res/app_url/app_url.dart';
-import 'package:getx_mvvm/res/components/round_button.dart';
-import 'package:getx_mvvm/utils/utils.dart';
+import 'package:getx_mvvm/view/login/login_view.dart';
+
 import 'package:getx_mvvm/view/login/widgets/input_email_widget.dart';
 import 'package:getx_mvvm/view/login/widgets/input_password_widget.dart';
 import 'package:getx_mvvm/view/login/widgets/login_button_widget.dart';
+import 'package:getx_mvvm/view/login/widgets/input_name_widget.dart';
 import 'package:getx_mvvm/view_models/controller/login/login_view_model.dart';
-import 'package:http/http.dart';
-
-import '../../data/response/status.dart';
 
 
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+
+
+class SignUpView extends StatefulWidget {
+  const SignUpView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends State<SignUpView> {
 
-  final loginVM = Get.put(AuthViewModel()) ;
+  final signupVM = Get.put(AuthViewModel()) ;
   final _formkey = GlobalKey<FormState>();
 
 
@@ -48,16 +45,18 @@ class _LoginViewState extends State<LoginView> {
               key: _formkey,
               child: Column(
                 children: [
-                  InputEmailWidget(authVM: loginVM,),
+                  InputNameWidget(authVM: signupVM,),
                   const SizedBox(height: 20,),
-                  InputPasswordWidget(authVM: loginVM,),
+                  InputEmailWidget(authVM: signupVM,),
+                  const SizedBox(height: 20,),
+                  InputPasswordWidget(authVM: signupVM,),
 
                 ],
               ),
             ),
 
             const SizedBox(height: 40,),
-            LoginButtonWidget(formKey: _formkey,authText: "Login",url: AppUrl.loginApi,authVM: loginVM,)
+            LoginButtonWidget(formKey: _formkey,authText: "Sign up",url: AppUrl.createUser,authVM: signupVM,),
           ],
         ),
       ),
