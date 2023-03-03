@@ -27,9 +27,16 @@ class InputEmailWidget<T> extends StatelessWidget {
         Utils.fieldFocusChange(context, authVM.emailFocusNode.value, authVM.passwordFocusNode.value);
       },
       decoration: InputDecoration(
-          hintText: 'email_hint'.tr,
-          border: OutlineInputBorder()
-      ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade400),
+            ),
+            fillColor: Colors.grey.shade200,
+            filled: true,
+            hintText: "email",
+            hintStyle: TextStyle(color: Colors.grey[500])),
     );
   }
 }

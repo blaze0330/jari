@@ -13,6 +13,7 @@ import 'package:getx_mvvm/view_models/controller/login/login_view_model.dart';
 import 'package:http/http.dart';
 
 import '../../data/response/status.dart';
+import '../../res/routes/routes_name.dart';
 
 
 
@@ -33,32 +34,69 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading:false,
-        title: Text('login'.tr),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Form(
-              key: _formkey,
-              child: Column(
-                children: [
-                  InputEmailWidget(authVM: loginVM,),
-                  const SizedBox(height: 20,),
-                  InputPasswordWidget(authVM: loginVM,),
-
-                ],
+      
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+                const SizedBox(height: 100),
+                // logo
+                const Icon(
+                  Icons.lock,
+                  size: 100,
+                ),
+        
+                const SizedBox(height: 50),
+        
+                // welcome back, you've been missed!
+                Text(
+                  'Welcome back you\'ve been missed!',
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 16,
+                  ),
+                ),
+        
+                const SizedBox(height: 25),
+              Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    InputEmailWidget(authVM: loginVM,),
+                      const SizedBox(height: 10),
+        
+                  // forgot password?
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed(RouteName.signupView);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: Colors.grey[600]),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                    const SizedBox(height: 20,),
+                    InputPasswordWidget(authVM: loginVM,),
+      
+                  ],
+                ),
               ),
-            ),
-
-            const SizedBox(height: 40,),
-            LoginButtonWidget(formKey: _formkey,authText: "Login",url: AppUrl.loginApi,authVM: loginVM,)
-          ],
+      
+              const SizedBox(height: 40,),
+              LoginButtonWidget(formKey: _formkey,authText: "Login",url: AppUrl.loginApi,authVM: loginVM,)
+            ],
+          ),
         ),
       ),
     );

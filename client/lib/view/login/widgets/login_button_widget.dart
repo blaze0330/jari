@@ -17,15 +17,35 @@ class LoginButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Obx(() => RoundButton(
-        width: 200,
-        title: authText,
-        loading: authVM.loading.value,
-        onPress: (){
+    return  Obx(() =>
+    GestureDetector(
+      onTap: (){
           if(formKey.currentState!.validate()){
             authVM.authApi(url);
           }
-        }
-    ));
+        },
+      child: authVM.loading.value ? CircularProgressIndicator() : Container(
+        padding: const EdgeInsets.all(25),
+        margin: const EdgeInsets.symmetric(horizontal: 25),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Text(
+            authText,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ),
+    )
+    );
   }
 }
+
+
+       
