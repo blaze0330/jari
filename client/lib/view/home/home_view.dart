@@ -58,12 +58,12 @@ class _HomeViewState extends State<HomeView> {
             }
           case Status.COMPLETED:
             return ListView.builder(
-              itemCount: homeController.userList.value!.length,
+              itemCount: homeController.userList.length, //Rxlist can be used without using .value even if we remove it , it's perfectly fine
                 itemBuilder: (context, index){
                   return Card(
                     child: ListTile(
                       
-                      title: Text(homeController.userList.value[index].title.toString()),
+                      title: Text(homeController.userList[index].title.toString()),
 
                     ),
                   );

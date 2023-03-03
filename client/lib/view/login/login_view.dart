@@ -44,7 +44,7 @@ class _LoginViewState extends State<LoginView> {
               key: _formkey,
               child: Column(
                 children: [
-                  InputEmailWidget(),
+                  InputEmailWidget(controller: "login",),
                   const SizedBox(height: 20,),
                   InputPasswordWidget(),
 
