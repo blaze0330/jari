@@ -41,6 +41,7 @@ class NetworkApiServices extends BaseApiServices {
         body: data,
         headers: {
           "Content-Type": "application/json",
+          "auth-token": await UserPreference().getUser().then((value) => value.toJson()['authtoken']),
         },
       ).timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
