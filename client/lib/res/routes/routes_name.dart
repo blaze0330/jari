@@ -8,6 +8,7 @@ class RouteName {
   static const String signupView = '/signup_view' ;
   static const String homeView = '/home_view' ;
   static const String btmnavbar = '/btmnavbar' ;
+  static const String addTask = '/addTask' ;
 
 
 }

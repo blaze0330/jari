@@ -14,14 +14,16 @@ router.get("/fetchalltasks", fetchuser, async (req, res) => {
 // adding tasks login required
 router.post('/addtask', fetchuser, [
   body('title', 'Enter a valid title').isLength({ min: 3 }),
+  
   ], async (req, res) => {
+    
     try {
       const { title, totalCount ,  completedCount, animationType } = req.body;
 
       // If there are errors, return Bad request and the errors
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({ success : false ,  error: errors.array()[0]['msg'] });
       }
       const task = new Tasks({
         title, totalCount ,  completedCount, animationType, user: req.user.id
