@@ -9,6 +9,8 @@ class RouteName {
   static const String homeView = '/home_view' ;
   static const String btmnavbar = '/btmnavbar' ;
   static const String addTask = '/addTask' ;
+  static const String leaderboard = '/leaderboard' ;
+  static const String taskanimation = '/taskanimation' ;
 
 
 }
