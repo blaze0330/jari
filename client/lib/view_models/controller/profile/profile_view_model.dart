@@ -1,29 +1,31 @@
 
 import 'package:get/get.dart';
 import 'package:getx_mvvm/data/response/status.dart';
+import 'package:getx_mvvm/models/getuser/get_user_model.dart';
 import 'package:getx_mvvm/models/home/user_list_model.dart';
+import 'package:getx_mvvm/repository/get_user_repository/get_user_repository.dart';
 import 'package:getx_mvvm/repository/home_repository/home_repository.dart';
 
-class HomeController extends GetxController {
+class GetUserController extends GetxController {
 
-  final _api = HomeRepository();
+  final _api = GetUserRepository();
 
 
   final rxRequestStatus = Status.LOADING.obs ;
-  RxList userList =[].obs ; // this is succesious
+  final user =GetUserModel().obs ;// this is succesious
   RxString error = ''.obs;
 
   void setRxRequestStatus(Status _value) => rxRequestStatus.value = _value ;
-  void setUserList(List<Task> _value) => userList.value = _value ;
+  void setUser(GetUserModel _value) => user.value = _value ;
   void setError(String _value) => error.value = _value ;
 
 
   void userListApi(){
   //  setRxRequestStatus(Status.LOADING);
 
-    _api.TaskList().then((value){
+    _api.getUser().then((value){
       setRxRequestStatus(Status.COMPLETED);
-      setUserList(value);
+      setUser(value);
     }).onError((error, stackTrace){
       setError(error.toString());
       setRxRequestStatus(Status.ERROR);
@@ -35,9 +37,9 @@ class HomeController extends GetxController {
 
       setRxRequestStatus(Status.LOADING);
 
-    _api.TaskList().then((value){
+    _api.getUser().then((value){
       setRxRequestStatus(Status.COMPLETED);
-      setUserList(value);
+      setUser(value);
     }).onError((error, stackTrace){
       setError(error.toString());
       setRxRequestStatus(Status.ERROR);
