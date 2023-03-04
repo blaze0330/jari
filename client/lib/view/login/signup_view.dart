@@ -37,9 +37,10 @@ class _SignUpViewState extends State<SignUpView> {
       
               // logo
               const Icon(
-                Icons.lock,
+                Icons.person,
                 size: 100,
               ),
+              
       
               const SizedBox(height: 50),
       

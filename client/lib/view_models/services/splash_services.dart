@@ -23,7 +23,7 @@ class SplashServices {
                 () => Get.toNamed(RouteName.loginView) );
       }else {
         Timer(const Duration(seconds: 3) ,
-                () => Get.toNamed(RouteName.homeView) );
+                () => Get.toNamed(RouteName.btmnavbar) );
       }
     });
 
