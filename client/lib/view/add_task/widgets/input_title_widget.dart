@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 
 import '../../../utils/utils.dart';
-import '../../../view_models/controller/login/login_view_model.dart';
 
-class InputEmailWidget extends StatelessWidget {
+
+class InputTitleWidget extends StatelessWidget {
   final authVM;
-  InputEmailWidget({Key? key , required this.authVM}) : super(key: key);
+  InputTitleWidget({Key? key , required this.authVM}) : super(key: key);
 
   
   
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return  TextFormField(
-      controller: authVM.emailController.value,
-      focusNode: authVM.emailFocusNode.value,
+      controller: authVM.titleController.value,
+      focusNode: authVM.titleFocusNode.value,
 
       validator: (value){
         if(value!.isEmpty){
-          Utils.snackBar('Email', 'Enter email');
+          Utils.snackBar('Title', 'Enter title');
         }
       },
       onFieldSubmitted: (value){
-        Utils.fieldFocusChange(context, authVM.emailFocusNode.value, authVM.passwordFocusNode.value);
+        Utils.fieldFocusChange(context, authVM.titleFocusNode.value, authVM.totalCountFocusNode.value);
       },
       decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
@@ -35,7 +33,7 @@ class InputEmailWidget extends StatelessWidget {
             ),
             fillColor: Colors.grey.shade200,
             filled: true,
-            hintText: "email",
+            hintText:"title",
             hintStyle: TextStyle(color: Colors.grey[500])),
     );
   }

@@ -5,7 +5,8 @@ import '../../res/bottomnavigationbar_url/bottomnavigationbar.dart';
 
 
 class BtmNavBar extends StatefulWidget {
-  const BtmNavBar({super.key});
+  int pagedx ;
+  BtmNavBar({super.key ,  required this.pagedx});
 
   @override
   State<BtmNavBar> createState() => _BtmNavBarState();

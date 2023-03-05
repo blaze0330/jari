@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_mvvm/res/app_url/app_url.dart';
-import 'package:getx_mvvm/view/login/login_view.dart';
+import 'package:getx_mvvm/view/add_task/widgets/select_animation_type.dart';
 
-import 'package:getx_mvvm/view/login/widgets/input_email_widget.dart';
-import 'package:getx_mvvm/view/login/widgets/input_password_widget.dart';
-import 'package:getx_mvvm/view/login/widgets/login_button_widget.dart';
-import 'package:getx_mvvm/view/login/widgets/input_name_widget.dart';
+import 'package:getx_mvvm/view/add_task/widgets/input_title_widget.dart';
+import 'package:getx_mvvm/view/add_task/widgets/input_total_count_widget.dart';
+import 'package:getx_mvvm/view/add_task/widgets/sumbit_button_widget.dart';
+
 import 'package:getx_mvvm/view_models/controller/add_task/add_task.dart';
-import 'package:getx_mvvm/view_models/controller/login/login_view_model.dart';
 
-import '../../res/routes/routes_name.dart';
 
 class AddTaskView extends StatefulWidget {
   const AddTaskView({Key? key}) : super(key: key);
@@ -22,6 +19,7 @@ class AddTaskView extends StatefulWidget {
 class _AddTaskViewState extends State<AddTaskView> {
   final addtaskVM = Get.put(AddTaskController());
   final _formkey = GlobalKey<FormState>();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -36,56 +34,40 @@ class _AddTaskViewState extends State<AddTaskView> {
             children: [
               const SizedBox(height: 80),
       
-              // logo
-              const Icon(
-                Icons.person,
-                size: 100,
-              ),
               
       
-              const SizedBox(height: 50),
+             
+             
       
-              // welcome back, you've been missed!
-              Text(
-                'Welcome back you\'ve been missed!',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
-                ),
-              ),
-      
-              const SizedBox(height: 25),
-              Form(
+            
+              Form( 
                 key: _formkey,
                 child: Column(
                   children: [
-                    InputNameWidget(
+                    InputTitleWidget(
                       authVM: addtaskVM,
                     ),
                   
                     const SizedBox(
                       height: 20,
                     ),
-                    InputEmailWidget(
+                    InputTotalCountWidget(
                       authVM: addtaskVM,
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InputPasswordWidget(
-                      authVM: addtaskVM,
-                    ),
+                   
                   ],
                 ),
               ),
+              SizedBox(height: 50,),
+              SelectAnimation(),
+              SizedBox(height: 50,),
       
               const SizedBox(
                 height: 40,
               ),
-              LoginButtonWidget(
+              SumbitButtonWidget(
                 formKey: _formkey,
-                authText: "Sign up",
-                url: AppUrl.createUser,
+                authText: "Create!",
                 authVM: addtaskVM,
               ),
             ],

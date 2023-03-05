@@ -20,7 +20,7 @@ class AuthViewModel extends GetxController {
 
   final emailFocusNode = FocusNode().obs;
   final passwordFocusNode = FocusNode().obs;
-  final nameFocusNode = FocusNode().obs;
+  // final nameFocusNode = FocusNode().obs;
 
   RxBool loading = false.obs;
 

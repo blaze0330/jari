@@ -33,16 +33,13 @@ class NetworkApiServices extends BaseApiServices {
   }
 
   @override
-  Future<dynamic> postApi(var data, String url) async {
+  Future<dynamic> postApi(var data, String url , Map<String,String> headers) async {
     dynamic responseJson;
     try {
       final response = await http.post(
         Uri.parse(url),
         body: data,
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": await UserPreference().getUser().then((value) => value.toJson()['authtoken']),
-        },
+        headers: headers
       ).timeout(const Duration(seconds: 10));
       responseJson = returnResponse(response);
     } catch (e) {
@@ -50,8 +47,8 @@ class NetworkApiServices extends BaseApiServices {
         // print(e.toString());
         throw InternetException(e.message);
       } else {
-        // print(e);
-        throw RequestTimeOut('');
+        print(e);
+        throw RequestTimeOut();
       }
     }
     if (kDebugMode) {
