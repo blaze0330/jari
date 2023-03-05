@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import '../../../utils/utils.dart';
 import '../../../view_models/controller/login/login_view_model.dart';
 
-class InputEmailWidget extends StatelessWidget {
+class InputTotalCountWidget extends StatelessWidget {
   final authVM;
-  InputEmailWidget({Key? key , required this.authVM}) : super(key: key);
+  InputTotalCountWidget({Key? key , required this.authVM}) : super(key: key);
 
   
   
@@ -15,16 +15,17 @@ class InputEmailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
-      controller: authVM.emailController.value,
-      focusNode: authVM.emailFocusNode.value,
+      controller: authVM.totalCountController.value,
+      focusNode: authVM.totalCountFocusNode.value,
 
       validator: (value){
         if(value!.isEmpty){
           Utils.snackBar('Email', 'Enter email');
         }
       },
+      keyboardType: TextInputType.numberWithOptions(),
       onFieldSubmitted: (value){
-        Utils.fieldFocusChange(context, authVM.emailFocusNode.value, authVM.passwordFocusNode.value);
+        Utils.fieldFocusChange(context, authVM.totalCountFocusNode.value, authVM.titleFocusNode.value);
       },
       decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
@@ -35,7 +36,7 @@ class InputEmailWidget extends StatelessWidget {
             ),
             fillColor: Colors.grey.shade200,
             filled: true,
-            hintText: "email",
+            hintText: "No. of tasks",
             hintStyle: TextStyle(color: Colors.grey[500])),
     );
   }

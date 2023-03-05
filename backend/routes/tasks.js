@@ -16,8 +16,9 @@ router.post(
   fetchuser,
   [body("title", "Enter a valid title").isLength({ min: 3 })],
   async (req, res) => {
+    console.log("hello buddy")
     try {
-      const { title, totalCount, completedCount, animationType } = req.body;
+      const { title, totalCount,  animationType } = req.body;
 
       // If there are errors, return Bad request and the errors
       const errors = validationResult(req);
@@ -29,7 +30,6 @@ router.post(
       const task = new Tasks({
         title,
         totalCount,
-        completedCount,
         animationType,
         user: req.user.id,
       });

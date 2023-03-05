@@ -47,13 +47,14 @@ class NetworkApiServices extends BaseApiServices {
         // print(e.toString());
         throw InternetException(e.message);
       } else {
-        // print(e);
-        throw RequestTimeOut('');
+        print(e);
+        throw RequestTimeOut();
       }
     }
     if (kDebugMode) {
       // print(responseJson);
     }
+    print(responseJson);
     return responseJson;
   }
 
