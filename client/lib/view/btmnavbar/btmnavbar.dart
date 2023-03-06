@@ -5,25 +5,23 @@ import '../../res/bottomnavigationbar_url/bottomnavigationbar.dart';
 
 
 class BtmNavBar extends StatefulWidget {
-  int pagedx ;
-  BtmNavBar({super.key ,  required this.pagedx});
+  int pagedx = 0;
+  BtmNavBar({super.key  });
 
   @override
-  State<BtmNavBar> createState() => _BtmNavBarState();
-}
+  State<BtmNavBar> createState() => BtmNavBarState();
+} 
 
-class _BtmNavBarState extends State<BtmNavBar> {
+ 
+
+class BtmNavBarState extends State<BtmNavBar> {
   int pagedx = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        onTap: ((index) {
-          setState(() {
-            pagedx = index;
-          });
-        }),
+        onTap: (setpagedx),
         currentIndex: pagedx,
         items: [
           BottomNavigationBarItem(
@@ -57,4 +55,10 @@ class _BtmNavBarState extends State<BtmNavBar> {
       body: pageindex[pagedx],
     );
   }
+
+  void setpagedx(index) {
+        setState(() {
+          pagedx = index;
+        });
+      }
 }

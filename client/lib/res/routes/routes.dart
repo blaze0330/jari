@@ -59,7 +59,7 @@ class AppRoutes {
     ) ,
     GetPage(
       name: RouteName.taskanimation,
-      page: () => TaskAnimation() ,
+      page: () => TaskAnimations() ,
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade ,
     ) ,

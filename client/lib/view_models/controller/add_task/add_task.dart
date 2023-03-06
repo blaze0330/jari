@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:getx_mvvm/models/login/user_model.dart';
+
 import 'package:getx_mvvm/repository/addtask/addtask.dart';
 
 import 'package:getx_mvvm/res/routes/routes_name.dart';
@@ -56,6 +56,7 @@ class AddTaskController extends GetxController {
       } else {
         Utils.snackBar('Hurray!!', 'Task Created');
         Get.delete<AddTaskController>();
+      //  setpagedx(2);
         Get.toNamed(RouteName.taskanimation , arguments: [value['_id']]);
       }
     }).onError((error, stackTrace) {
