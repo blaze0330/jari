@@ -9,7 +9,7 @@ import '../../view/profile/profile.dart';
 
 var pageindex = [
   HomeView(),
-  TaskAnimation(),
+  TaskAnimations(),
   Leaderboard(),
   Profile(),
 ];

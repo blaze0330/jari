@@ -9,7 +9,7 @@ import 'package:getx_mvvm/view_models/controller/user_preference/user_prefrence_
 
 import '../../res/components/internet_exceptions_widget.dart';
 import '../../view_models/controller/home/home_view_models.dart';
-
+ 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
 
