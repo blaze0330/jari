@@ -65,15 +65,9 @@ class _TaskAnimationsState extends State<TaskAnimations> {
                   itemCount: homeController.userList.length, 
                   onPageChanged: (value){
                     
-                    print("Index on page changes :- ${value}");
-                    // homeController.refreshApi();
-                    print("Index on page changes :- ${value}");
-                    print("completed count (before setting it to the completedcount of another task) :- ${updatevm.completedCount}");
-                    print("Userlist completed count on page change ;- ${homeController.userList[value].completedCount}");
+                    
                     updatevm.changeCount(value); 
-                    print("completed count (after setting it to the completedcount of another task) :- ${updatevm.completedCount}");
-
-                    // print(widget.currentpage);
+                    
                   },
                 );
              

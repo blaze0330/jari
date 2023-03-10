@@ -37,7 +37,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
     // TODO: implement initState
     super.initState();
     
-    // updatevm.incrementCount(widget.animationtask.completedCount);
+    
   }
 
   @override
@@ -74,8 +74,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                       inputValue = controller?.findInput("input");
                       inputValue?.change(
                           (100/widget.animationtask.totalCount)*widget.animationtask.completedCount);
-                      print(" input value ${inputValue!.value}");
-                      // print((100/widget.animationtask.totalCount)*widget.animationtask.completedCount);
+                     
                     }
                   },
                 )),
@@ -92,14 +91,13 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                     )),
                 FloatingActionButton(
                   onPressed: () {
-                    print(
-                        "completed count before pressing increament count function (Onpressed particular animation) :- ${updatevm.completedCount}");
+                   
                     updatevm
                         .incrementCount((updatevm.completedCount).toInt() + 1);
                         if (updatevm.completedCount.toString() == widget.animationtask.totalCount.toString()) {
                           Get.toNamed(RouteName.completedanimation);
                         }
-                        print("completed count after pressing increament count function (Onpressed particular animation) :- ${updatevm.completedCount}");
+              
                     updatevm.updateCount(widget.animationtask.sId.toString());
                     inputValue?.change((100 / widget.animationtask.totalCount) *
                         (updatevm.completedCount).toInt());

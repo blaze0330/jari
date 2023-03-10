@@ -25,12 +25,10 @@ class UpdateCompleteCountController extends GetxController {
 
   void incrementCount (int i){
     completedCount.value = i;
-    print("completed count after Increment count method runs :- ${completedCount.value}");
   }
   void changeCount (int i){
     homeController.userListApi();
     completedCount.value = homeController.userList[i].completedCount;
-    print("completed count after change count count method runs :- ${completedCount.value}");
   }
 
   void updateCount(String id) {
