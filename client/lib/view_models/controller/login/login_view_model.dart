@@ -20,7 +20,7 @@ class AuthViewModel extends GetxController {
 
   final emailFocusNode = FocusNode().obs;
   final passwordFocusNode = FocusNode().obs;
-  // final nameFocusNode = FocusNode().obs;
+  final nameFocusNode = FocusNode().obs;
 
   RxBool loading = false.obs;
 
@@ -46,7 +46,7 @@ class AuthViewModel extends GetxController {
         userPreference.saveUser(userModel).then((value) {
           // releasing resouces because we are not going to use this
           Get.delete<AuthViewModel>();
-          Get.toNamed(RouteName.homeView)!.then((value) {});
+          Get.toNamed(RouteName.btmnavbar)!.then((value) {});
           Utils.snackBar('Login', 'Login successfully');
         }).onError((error, stackTrace) {});
       }

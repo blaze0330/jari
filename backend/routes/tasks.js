@@ -8,6 +8,7 @@ const Tasks = require("../models/Tasks");
 router.get("/fetchalltasks", fetchuser, async (req, res) => {
   const tasks = await Tasks.find({ user: req.user.id });
   res.json(tasks);
+  
 });
 
 // adding tasks login required

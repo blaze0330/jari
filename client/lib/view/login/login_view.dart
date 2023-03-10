@@ -79,7 +79,7 @@ class _LoginViewState extends State<LoginView> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            'Forgot Password?',
+                            'Create Account?',
                             style: TextStyle(color: Colors.grey[600]),
                           ),
                         ],

@@ -49,17 +49,12 @@ class AddTaskController extends GetxController {
 
     _api.addTask(jsonEncode(data)).then((value) {
       loading.value = false;
-      print('hi ${value}');
-
-      if (value['success'] == false) {
-        Utils.snackBar('oops!', value['error']);
-      } else {
-        Utils.snackBar('Hurray!!', 'Task Created');
+     
         Get.delete<AddTaskController>();
-      //  setpagedx(2);
-        Get.toNamed(RouteName.taskanimation , arguments: [value['_id']]);
+   
+        Get.toNamed(RouteName.taskanimation );
       }
-    }).onError((error, stackTrace) {
+    ).onError((error, stackTrace) {
       loading.value = false;
       Utils.snackBar('Error', error.toString());
     });

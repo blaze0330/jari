@@ -11,6 +11,7 @@ class RouteName {
   static const String addTask = '/addTask' ;
   static const String leaderboard = '/leaderboard' ;
   static const String taskanimation = '/taskanimation' ;
+  static const String completedanimation = '/completedanimation' ;
 
 
 }

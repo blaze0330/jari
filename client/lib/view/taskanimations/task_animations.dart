@@ -6,12 +6,13 @@ import 'package:getx_mvvm/res/components/general_exception.dart';
 
 import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view/taskanimations/particular_animation.dart';
+import 'package:getx_mvvm/view_models/controller/update/update_completed_count_view_model.dart';
 
+import '../../res/components/empty_page.dart';
 import '../../res/components/internet_exceptions_widget.dart';
 import '../../view_models/controller/home/home_view_models.dart';
 
 class TaskAnimations extends StatefulWidget {
-  var currentpage = 0;
   TaskAnimations({Key? key}) : super(key: key);
 
   @override
@@ -20,19 +21,22 @@ class TaskAnimations extends StatefulWidget {
 
 class _TaskAnimationsState extends State<TaskAnimations> {
   final homeController = Get.put(HomeController());
+  final updatevm = Get.put(UpdateCompleteCountController());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    
     homeController.userListApi();
+    
+   
+    
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFFEFEEEE),
-      body: Obx(() {
+    return  Obx(() {
         switch (homeController.rxRequestStatus.value) {
           case Status.LOADING:
             return const Center(child: CircularProgressIndicator());
@@ -47,11 +51,11 @@ class _TaskAnimationsState extends State<TaskAnimations> {
               return GeneralExceptionWidget(onPress: () {
                 homeController.refreshApi();
               });
-            }
+            } 
           case Status.COMPLETED:
             return 
                 
-                PageView.builder(
+                homeController.userList.isEmpty? EmptyPage() : PageView.builder(
                 
                   physics: ScrollPhysics(),
                   
@@ -60,16 +64,16 @@ class _TaskAnimationsState extends State<TaskAnimations> {
                     return ParticularAnimation(animationtask: homeController.userList[index],);
                   },
                   itemCount: homeController.userList.length, 
-                  onPageChanged: (index){
-                    setState(() {
-                      widget.currentpage=index;
-                    });
-                    // print(widget.currentpage);
+                  onPageChanged: (value){
+                    
+                    
+                    updatevm.changeCount(value); 
+                    
                   },
                 );
              
         }
-      }),
+      }
     );
   }
 }
