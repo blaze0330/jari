@@ -13,7 +13,7 @@ class HomeRepository {
     List<Task> taskList = [];
     dynamic response = await _apiService.getApi(AppUrl.fetchalltasks);
     for (Map<String,dynamic> i in response) {
-      if (i['completedCount']<=i['totalCount']) {
+      if (i['completedCount']<i['totalCount']) {
         taskList.add(Task.fromJson(i));
       };
       

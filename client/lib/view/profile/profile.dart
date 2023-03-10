@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+import 'package:get/get.dart';
 
-  @override
-  State<Profile> createState() => _ProfileState();
-}
+import '../../res/routes/routes_name.dart';
+import '../../view_models/controller/user_preference/user_prefrence_view_model.dart';
+class Profile extends StatelessWidget {
+  Profile({super.key});
+  UserPreference userPreference = UserPreference();
 
-class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: GestureDetector(
+        child: Center(
+          child: Icon(Icons.logout , size: 100,),
+          
+        ),
+        onTap: () {
+          userPreference.removeUser().then((value){
+              Get.toNamed(RouteName.loginView);
+        });},
+      )
+    );
   }
 }

@@ -5,6 +5,7 @@ import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view/Leaderboard/Leaderboard.dart';
 import 'package:getx_mvvm/view/add_task/add_task.dart';
 import 'package:getx_mvvm/view/btmnavbar/btmnavbar.dart';
+import 'package:getx_mvvm/view/completed_task/completed_task_view.dart';
 import 'package:getx_mvvm/view/home/home_view.dart';
 import 'package:getx_mvvm/view/login/login_view.dart';
 import 'package:getx_mvvm/view/splash_screen.dart';
@@ -60,6 +61,12 @@ class AppRoutes {
     GetPage(
       name: RouteName.taskanimation,
       page: () => TaskAnimations() ,
+      transitionDuration: Duration(milliseconds: 250),
+      transition: Transition.leftToRightWithFade ,
+    ) ,
+    GetPage(
+      name: RouteName.completedanimation,
+      page: () => CompletedTask() ,
       transitionDuration: Duration(milliseconds: 250),
       transition: Transition.leftToRightWithFade ,
     ) ,

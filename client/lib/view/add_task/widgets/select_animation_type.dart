@@ -53,7 +53,7 @@ class _SelectAnimationState extends State<SelectAnimation> {
               addtaskVM.toogleOpcaity(1);
               
             },
-            child:Obx(() =>  Opacity(
+            child:  Opacity(
               opacity: addtaskVM.opacity[1],
               child: const CircleAvatar(
                 radius: 30.0,
@@ -62,7 +62,7 @@ class _SelectAnimationState extends State<SelectAnimation> {
               ),
             ),
           ),
-          ),
+         
           GestureDetector(
             onTap: () {
               addtaskVM.toogleOpcaity(2);

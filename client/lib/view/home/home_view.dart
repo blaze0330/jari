@@ -67,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
                             SizedBox(height: 30),
                             GestureDetector(
                               onTap: () {
-                                Get.toNamed(RouteName.taskanimation , arguments: [homeController.userList[index]._id.toString()]);
+                                Get.toNamed(RouteName.taskanimation , arguments: [homeController.userList[index].sId.toString()]);
                               },
                               child: NeuMorphism(
                                 height: 50,
