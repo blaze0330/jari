@@ -31,11 +31,11 @@ class HomeController extends GetxController {
     });
   }
 
-  void refreshApi(){
+  void refreshApi() async{
 
       setRxRequestStatus(Status.LOADING);
 
-    _api.TaskList().then((value){
+   await  _api.TaskList().then((value){
       setRxRequestStatus(Status.COMPLETED);
       setUserList(value);
     }).onError((error, stackTrace){

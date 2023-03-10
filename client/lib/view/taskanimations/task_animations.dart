@@ -8,6 +8,7 @@ import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view/taskanimations/particular_animation.dart';
 import 'package:getx_mvvm/view_models/controller/update/update_completed_count_view_model.dart';
 
+import '../../res/components/empty_page.dart';
 import '../../res/components/internet_exceptions_widget.dart';
 import '../../view_models/controller/home/home_view_models.dart';
 
@@ -26,10 +27,10 @@ class _TaskAnimationsState extends State<TaskAnimations> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    
     homeController.userListApi();
-    if (homeController.userList.isNotEmpty) {
-      updatevm.changeCount(0);
-    }
+    
+   
     
   }
 
@@ -50,11 +51,11 @@ class _TaskAnimationsState extends State<TaskAnimations> {
               return GeneralExceptionWidget(onPress: () {
                 homeController.refreshApi();
               });
-            }
+            } 
           case Status.COMPLETED:
             return 
                 
-                PageView.builder(
+                homeController.userList.isEmpty? EmptyPage() : PageView.builder(
                 
                   physics: ScrollPhysics(),
                   

@@ -52,7 +52,7 @@ class AddTaskController extends GetxController {
      
         Get.delete<AddTaskController>();
    
-        Get.toNamed(RouteName.taskanimation , arguments: [value['_id']]);
+        Get.toNamed(RouteName.taskanimation );
       }
     ).onError((error, stackTrace) {
       loading.value = false;

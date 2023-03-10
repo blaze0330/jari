@@ -17,7 +17,6 @@ class ParticularAnimation extends StatefulWidget {
   final animationtask;
   const ParticularAnimation({super.key, required this.animationtask});
 
-
   @override
   State<ParticularAnimation> createState() => _ParticularAnimationState();
 }
@@ -37,7 +36,6 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
     // TODO: implement initState
     super.initState();
     
-    
   }
 
   @override
@@ -47,9 +45,9 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              height: 40,
-            ),
+            // SizedBox(
+            //   height: 40,
+            // ),
             Text(
               widget.animationtask.title.toString(),
               style: TextStyle(
@@ -69,12 +67,11 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                     );
 
                     if (controller != null) {
-                      
                       artboard.addController(controller!);
                       inputValue = controller?.findInput("input");
                       inputValue?.change(
-                          (100/widget.animationtask.totalCount)*widget.animationtask.completedCount);
-                     
+                          (100 / widget.animationtask.totalCount) *
+                              widget.animationtask.completedCount);
                     }
                   },
                 )),
@@ -91,16 +88,15 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                     )),
                 FloatingActionButton(
                   onPressed: () {
-                   
-                    updatevm
-                        .incrementCount((updatevm.completedCount).toInt() + 1);
-                        if (updatevm.completedCount.toString() == widget.animationtask.totalCount.toString()) {
-                          Get.toNamed(RouteName.completedanimation);
-                        }
-              
                     updatevm.updateCount(widget.animationtask.sId.toString());
+                    updatevm
+                        .incrementCount(1);
                     inputValue?.change((100 / widget.animationtask.totalCount) *
                         (updatevm.completedCount).toInt());
+                    if (updatevm.completedCount.toString() ==
+                        widget.animationtask.totalCount.toString()) {
+                      Get.toNamed(RouteName.completedanimation);
+                    }
                   },
                   child: Icon(Icons.add),
                 ),
