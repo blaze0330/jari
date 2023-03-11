@@ -30,6 +30,7 @@ class NetworkApiServices extends BaseApiServices {
         throw RequestTimeOut('');
     }
     return responseJson;
+
   }
 
   @override
@@ -50,7 +51,7 @@ class NetworkApiServices extends BaseApiServices {
         print(e);
         throw RequestTimeOut();
       }
-    }
+    } 
     if (kDebugMode) {
       // print(responseJson);
     }

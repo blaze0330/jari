@@ -27,8 +27,8 @@ class UpdateCompleteCountController extends GetxController {
     completedCount.value += i;
   }
   void changeCount (int i){
-    
-    completedCount.value = i;
+    homeController.userListApi();
+    completedCount.value = homeController.userList[i].completedCount;
   }
 
   void updateCount(String id) {

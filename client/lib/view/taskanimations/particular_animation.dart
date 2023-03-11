@@ -23,6 +23,7 @@ class ParticularAnimation extends StatefulWidget {
 
 class _ParticularAnimationState extends State<ParticularAnimation> {
   final updatevm = Get.put(UpdateCompleteCountController());
+  final homeController = Get.put(HomeController());
 
   StateMachineController? controller;
   SMIInput<double>? inputValue;
@@ -35,7 +36,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    
+    homeController.userListApi();
   }
 
   @override

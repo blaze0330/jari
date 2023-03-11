@@ -84,8 +84,8 @@ class _HomeViewState extends State<HomeView> {
                                 GestureDetector(
                                   onTap: () {
                                     if (homeController.userList.isNotEmpty) {
-                                      homeController.refreshApi();
-                                      updatevm.changeCount( homeController.userList[0].completedCount);
+                                
+                                      updatevm.changeCount( 0);
                                     }
                                     Get.toNamed(RouteName.taskanimation,
                                         arguments: [

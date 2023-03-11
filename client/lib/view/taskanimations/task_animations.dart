@@ -67,7 +67,7 @@ class _TaskAnimationsState extends State<TaskAnimations> {
                   onPageChanged: (value){
                     
                     
-                    updatevm.changeCount(homeController.userList[value].completedCount); 
+                    updatevm.changeCount(value); 
                     
                   },
                 );
