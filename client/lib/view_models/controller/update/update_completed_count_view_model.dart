@@ -14,22 +14,28 @@ import 'package:getx_mvvm/view_models/controller/user_preference/user_prefrence_
 import '../home/home_view_models.dart';
 
 class UpdateCompleteCountController extends GetxController {
+
   final _api = UpdateCompleteCountRepository();
-  final homeController = Get.put(HomeController());
+
 
 
   RxBool loading = false.obs;
-  RxInt completedCount = 0.obs;
+  RxList list = [].obs;
 
+  incrementListCount(int index){
+    list.value[index]++;
+  }
+
+  setList(List countList){
+    list.value = countList;
+  }
+
+  removeListCount(index){
+    list.removeAt(index);
+  }
   
 
-  void incrementCount (int i){
-    completedCount.value += i;
-  }
-  void changeCount (int i){
-    homeController.userListApi();
-    completedCount.value = homeController.userList[i].completedCount;
-  }
+  
 
   void updateCount(String id) {
     loading.value = true;

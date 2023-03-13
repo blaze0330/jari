@@ -56,12 +56,7 @@ class BtmNavBarState extends State<BtmNavBar> {
   }
 
   void setpagedx(index) {
-    if (index == 2) {
-      widget.homeController.userListApi();
-      if (widget.homeController.userList.isNotEmpty) {
-        widget.updatevm.changeCount(0);
-      }
-    }
+    
     setState(() {
       pagedx = index;
     });
