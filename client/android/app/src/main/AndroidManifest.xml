@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.getx_mvvm">
-    <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" /> <!-- Add this -->
    <application
         android:label="getx_mvvm"
         android:name="${applicationName}"

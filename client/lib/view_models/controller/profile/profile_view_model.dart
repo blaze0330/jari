@@ -10,7 +10,7 @@ class GetUserController extends GetxController {
 
   final _api = GetUserRepository();
 
-
+ 
   final rxRequestStatus = Status.LOADING.obs ;
   final user =GetUserModel().obs ;// this is succesious
   RxString error = ''.obs;
@@ -20,7 +20,7 @@ class GetUserController extends GetxController {
   void setError(String _value) => error.value = _value ;
 
 
-  void userListApi(){
+  void userApi(){
   //  setRxRequestStatus(Status.LOADING);
 
     _api.getUser().then((value){
@@ -28,22 +28,11 @@ class GetUserController extends GetxController {
       setUser(value);
     }).onError((error, stackTrace){
       setError(error.toString());
+      print("ayushi ${error}");
       setRxRequestStatus(Status.ERROR);
 
     });
   }
 
-  void refreshApi(){
-
-      setRxRequestStatus(Status.LOADING);
-
-    _api.getUser().then((value){
-      setRxRequestStatus(Status.COMPLETED);
-      setUser(value);
-    }).onError((error, stackTrace){
-      setError(error.toString());
-      setRxRequestStatus(Status.ERROR);
-
-    });
-  }
+  
 }

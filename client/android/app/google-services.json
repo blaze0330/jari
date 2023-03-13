@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478885684254",
+    "project_id": "jarify-b69f6",
+    "storage_bucket": "jarify-b69f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478885684254:android:1be54c8ef8042d8be13a0f",
+        "android_client_info": {
+          "package_name": "com.example.getx_mvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478885684254-e29471qf1uf290ie3vb75qqbo5657n0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCENolDiUt0Hi1W423bXq7Z8x2J8P-jDI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478885684254-e29471qf1uf290ie3vb75qqbo5657n0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

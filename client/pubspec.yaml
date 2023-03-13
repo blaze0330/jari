@@ -40,6 +40,14 @@ dependencies:
   http: ^0.13.5
   fluttertoast: ^8.1.2
   rive: ^0.9.1
+  firebase_core:
+  cloud_firestore:
+  image_picker:
+  path_provider:
+  flutter_image_compress:
+  firebase_storage:
+  firebase_database:
+
 
 dev_dependencies:
   flutter_test:

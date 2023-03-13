@@ -17,20 +17,24 @@ class AuthViewModel extends GetxController {
   final emailController = TextEditingController().obs;
   final passwordController = TextEditingController().obs;
   final nameController = TextEditingController().obs;
+  RxString imageController = ''.obs;
 
   final emailFocusNode = FocusNode().obs;
   final passwordFocusNode = FocusNode().obs;
   final nameFocusNode = FocusNode().obs;
 
   RxBool loading = false.obs;
-
+  setImageController(String url){
+    imageController.value = url;
+  }
   void authApi(String url) {
     loading.value = true;
     Map<String, String> data = {
       if (nameController.value.text.isNotEmpty)
         'name': nameController.value.text,
       'email': emailController.value.text,
-      'password': passwordController.value.text
+      'password': passwordController.value.text,
+      'image':imageController.value
     };
 
     _api.authApi(jsonEncode(data), url).then((value) {

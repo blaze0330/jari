@@ -38,6 +38,7 @@ router.post(
         name: req.body.name,
         email: req.body.email,
         password: secPass,
+        image:req.body.image,
       });
 
       const data = {
@@ -110,7 +111,7 @@ router.post(
 );
 
 // ROUTE 3 : get logged in user details using : POST '/api/auth/getuser' . Login required
-router.post("/getuser", fetchuser, async (req, res) => {
+router.get("/getuser", fetchuser, async (req, res) => {
   try {
     userId = req.user.id;
     const user = await User.findById(userId).select("-password");
