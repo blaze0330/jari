@@ -109,7 +109,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                   width: 70.00,
                   child: Center(
                     child:
-                        Obx(() => Text(updatevm.list[widget.index].toString())),
+                        Obx((){ return Text(updatevm.list[widget.index].toString());}),
                   ))
             ],
           )

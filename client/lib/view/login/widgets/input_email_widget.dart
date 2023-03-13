@@ -18,7 +18,7 @@ class InputEmailWidget extends StatelessWidget {
       controller: authVM.emailController.value,
       focusNode: authVM.emailFocusNode.value,
 
-      validator: (value){
+      validator: (value){ 
         if(value!.isEmpty){
           Utils.snackBar('Email', 'Enter email');
         }

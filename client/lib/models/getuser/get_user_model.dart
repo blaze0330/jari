@@ -2,16 +2,16 @@ class GetUserModel {
   String? sId;
   String? name;
   String? email;
-  String? date;
+  String? image;
   int? iV;
 
-  GetUserModel({this.sId, this.name, this.email, this.date, this.iV});
+  GetUserModel({this.sId, this.name, this.email, this.image, this.iV});
 
   GetUserModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     name = json['name'];
     email = json['email'];
-    date = json['date'];
+    image = json['image'];
     iV = json['__v'];
   }
 
@@ -20,7 +20,7 @@ class GetUserModel {
     data['_id'] = this.sId;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['date'] = this.date;
+    data['image'] = this.image;
     data['__v'] = this.iV;
     return data;
   }

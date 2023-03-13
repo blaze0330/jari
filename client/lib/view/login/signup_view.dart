@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_mvvm/res/app_url/app_url.dart';
 import 'package:getx_mvvm/view/login/login_view.dart';
+import 'package:getx_mvvm/view/login/widgets/add_image.dart';
 
 import 'package:getx_mvvm/view/login/widgets/input_email_widget.dart';
 import 'package:getx_mvvm/view/login/widgets/input_password_widget.dart';
@@ -36,10 +37,7 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(height: 80),
       
               // logo
-              const Icon(
-                Icons.person,
-                size: 100,
-              ),
+              inputImageWidget(authVM: signupVM,),
               
       
               const SizedBox(height: 50),

@@ -16,7 +16,11 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  date: { type: Date, default: Date.now },
+  image:{
+    type :String,
+    required : true,
+    unique : true
+  }
 });
 
 const User = mongoose.model('user',UserSchema);
