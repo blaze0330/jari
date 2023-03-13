@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xFFEFEEEE),
+      backgroundColor: Color(0xFFFFFFFF),
 
       body: Obx(() {
         switch (homeController.rxRequestStatus.value) {
@@ -54,6 +54,7 @@ class _HomeViewState extends State<HomeView> {
               });
             }
           case Status.COMPLETED:
+            
             return SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -83,10 +84,7 @@ class _HomeViewState extends State<HomeView> {
                                 SizedBox(height: 30),
                                 GestureDetector(
                                   onTap: () {
-                                    if (homeController.userList.isNotEmpty) {
-                                      homeController.refreshApi();
-                                      updatevm.changeCount( homeController.userList[0].completedCount);
-                                    }
+                                    
                                     Get.toNamed(RouteName.taskanimation,
                                         arguments: [
                                           homeController.userList[index].sId

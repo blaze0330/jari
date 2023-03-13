@@ -25,11 +25,12 @@ class NetworkApiServices extends BaseApiServices {
     } catch (e) {
       print(e);
       if (e is SocketException) {
-        // throw InternetException(e.message);
+        print(e);
       } else
         throw RequestTimeOut('');
     }
     return responseJson;
+
   }
 
   @override
@@ -50,7 +51,7 @@ class NetworkApiServices extends BaseApiServices {
         print(e);
         throw RequestTimeOut();
       }
-    }
+    } 
     if (kDebugMode) {
       // print(responseJson);
     }
