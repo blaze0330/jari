@@ -50,8 +50,7 @@ router.put("/updatetask/:id", fetchuser, async (req, res) => {
 
   // find the note to be updated and update it
   let task = await Tasks.findById(req.params.id);
-  console.log(task);
-  console.log(typeof(task));
+  
   task['completedCount']+=1;
   const newTask = task;
 

@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const fetchuser = require("../middleware/fetchuser");
 var jwt = require("jsonwebtoken");
-const Notes = require("../models/Tasks");
+const Notes = require("../models/User");
 
 const JWT_SECRET = "Ayushisabadb$oy";
 // registering user
@@ -120,6 +120,43 @@ router.get("/getuser", fetchuser, async (req, res) => {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
+});
+
+router.get("/getallusers", fetchuser, async (req, res) => {
+  try {
+    const user = await User.find().sort({completedTasks : -1}).select('image name completedTasks');
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+router.put("/updateuser/:id", fetchuser, async (req, res) => {
+  // create new object
+  
+
+  // find the note to be updated and update it
+  let user = await User.findById(req.params.id);
+  console.log("update");
+  console.log(user);
+  user['completedTasks']+=1;
+  const newUser = user;
+
+  if (!user) {
+    return req.status(404).send("not found");
+  }
+
+  if (user._id.toString() !== req.user.id) {
+    return res.status(401).send("Not Allowed");
+  }
+
+  user = await User.findByIdAndUpdate(
+    req.params.id,
+    { $set: newUser },
+    { new: true }
+  );
+  res.json({ user });
 });
 
 

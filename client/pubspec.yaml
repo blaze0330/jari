@@ -47,6 +47,7 @@ dependencies:
   flutter_image_compress:
   firebase_storage:
   firebase_database:
+  cached_network_image:
 
 
 dev_dependencies:

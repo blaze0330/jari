@@ -61,7 +61,7 @@ class _TaskAnimationsState extends State<TaskAnimations> {
                   
                                 
                   itemBuilder: (context, index) {
-                    return ParticularAnimation(animationtask: homeController.userList[index],index: index,);
+                    return ParticularAnimation(animationtask: homeController.userList[index],position: index,);
                   },
                   itemCount: homeController.userList.length, 
                   onPageChanged: (value){
