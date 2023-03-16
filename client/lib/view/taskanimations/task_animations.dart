@@ -13,7 +13,8 @@ import '../../res/components/internet_exceptions_widget.dart';
 import '../../view_models/controller/home/home_view_models.dart';
 
 class TaskAnimations extends StatefulWidget {
-  TaskAnimations({Key? key}) : super(key: key);
+  final position;
+  const TaskAnimations({Key? key, this.position}) : super(key: key);
 
   @override
   State<TaskAnimations> createState() => _TaskAnimationsState();
@@ -22,6 +23,7 @@ class TaskAnimations extends StatefulWidget {
 class _TaskAnimationsState extends State<TaskAnimations> {
   final homeController = Get.put(HomeController());
   final updatevm = Get.put(UpdateCompleteCountController());
+  final PageController _controller = PageController(initialPage: Get.arguments == null ? 0 :Get.arguments[0]);
 
   @override
   void initState() {
@@ -56,6 +58,7 @@ class _TaskAnimationsState extends State<TaskAnimations> {
             return 
                 
                 homeController.userList.isEmpty? EmptyPage() : PageView.builder(
+                  controller: _controller,
                 
                   physics: ScrollPhysics(),
                   

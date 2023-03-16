@@ -21,6 +21,7 @@ class _BarsState extends State<Bars> {
     final temp = widget.userList[0];
     widget.userList[0] = widget.userList[1];
     widget.userList[1] = temp;
+    
   }
 
   Widget build(BuildContext context) {
@@ -42,6 +43,7 @@ class _BarsState extends State<Bars> {
                         ? widget.userList.length
                         : 3, //Rxlist can be used without using .value even if we remove it , it's perfectly fine
                     itemBuilder: (context, index) {
+                      
                       return Padding(
                         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                         child: Column(
@@ -52,7 +54,10 @@ class _BarsState extends State<Bars> {
                                   widget.userList[index].image.toString()),
                               radius: 40,
                             ),
-                            Container(
+                            AnimatedContainer(
+                              duration: const Duration(
+                  milliseconds: 370,
+                ),
                               decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -69,7 +74,7 @@ class _BarsState extends State<Bars> {
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
                                       radius: 20,
-                                      child: Text((index + 1).toString(),
+                                      child: Text(index == 0 ? "2" : index == 1 ? "1" :(index + 1).toString(),
                                           style: TextStyle(
                                               color: Color(0xFFFF9575))),
                                     ),

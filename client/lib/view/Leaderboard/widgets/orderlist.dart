@@ -4,10 +4,22 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../../res/components/neumorphism.dart';
 
-class OrderList extends StatelessWidget {
-  final userList;
-  const OrderList({super.key, this.userList});
+class OrderList extends StatefulWidget {
+  final user_List;
+  
+  const OrderList({super.key, this.user_List});
 
+  @override
+  State<OrderList> createState() => _OrderListState();
+}
+
+class _OrderListState extends State<OrderList> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.user_List[0].name);
+  }
   @override
   Widget build(BuildContext context) {
      return SingleChildScrollView(
@@ -19,7 +31,7 @@ class OrderList extends StatelessWidget {
                        ListView.builder(
                           shrinkWrap: true,
                           physics: ScrollPhysics(),
-                          itemCount: userList
+                          itemCount: widget.user_List
                               .length, //Rxlist can be used without using .value even if we remove it , it's perfectly fine
                           itemBuilder: (context, index) {
                             return Column(
@@ -37,12 +49,12 @@ class OrderList extends StatelessWidget {
                                         ),),
                                         SizedBox(width: 30,),
                                         CircleAvatar(
-                                          backgroundImage: NetworkImage(userList[index].image),
+                                          backgroundImage: NetworkImage(widget.user_List[index].image),
                                           radius: 30,
                                         ),
                                         SizedBox(width: 20,),
                                         Text(
-                                            userList[index].name
+                                            widget.user_List[index].name
                                             .toString(),style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 20
@@ -50,7 +62,7 @@ class OrderList extends StatelessWidget {
                                       
                                          new Spacer(),
                                         Text(
-                                            userList[index].completedTasks
+                                            widget.user_List[index].completedTasks
                                             .toString(),style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 20

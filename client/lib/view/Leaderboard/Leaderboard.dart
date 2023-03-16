@@ -63,7 +63,7 @@ class _LeaderboardState extends State<Leaderboard> {
                 ),
               Expanded(
                 flex: 1,
-                child: OrderList(userList: homeController.userList,)
+                child: OrderList(user_List: homeController.userList,)
                 ),
             ],
            );

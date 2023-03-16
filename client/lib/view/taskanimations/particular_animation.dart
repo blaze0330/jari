@@ -100,7 +100,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                       (updatevm.list[widget.position]).toInt());
                   if (updatevm.list[widget.position].toString() ==
                       widget.animationtask.totalCount.toString()) {
-                        print(getuserVM.user.value.sId.toString());
+                       
                         updatevm.updateCount(getuserVM.user.value.sId.toString(), AppUrl.updateCompletedTasks);
                     updatevm.removeListCount(widget.position);
                     Get.toNamed(RouteName.completedanimation);
