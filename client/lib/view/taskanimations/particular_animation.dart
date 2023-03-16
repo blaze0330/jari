@@ -7,17 +7,20 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_mvvm/res/components/neumorphism.dart';
 import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view/add_task/widgets/round_color_container.dart';
+import 'package:getx_mvvm/view_models/controller/profile/profile_view_model.dart';
 import 'package:getx_mvvm/view_models/controller/update/update_completed_count_view_model.dart';
 
 import 'package:rive/rive.dart';
 
+import '../../res/app_url/app_url.dart';
 import '../../res/assets/image_assets.dart';
 import '../../view_models/controller/home/home_view_models.dart';
 
 class ParticularAnimation extends StatefulWidget {
-  final animationtask ;
-  final index;
-  const ParticularAnimation({super.key, required this.animationtask, this.index});
+  final animationtask;
+  final position;
+  const ParticularAnimation(
+      {super.key, required this.animationtask, this.position});
 
   @override
   State<ParticularAnimation> createState() => _ParticularAnimationState();
@@ -26,6 +29,7 @@ class ParticularAnimation extends StatefulWidget {
 class _ParticularAnimationState extends State<ParticularAnimation> {
   final updatevm = Get.put(UpdateCompleteCountController());
   final homeController = Get.put(HomeController());
+  final getuserVM = Get.put(GetUserController());
 
   StateMachineController? controller;
   SMIInput<double>? inputValue;
@@ -39,6 +43,7 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
     // TODO: implement initState
     super.initState();
     homeController.userListApi();
+    getuserVM.userApi();
   }
 
   @override
@@ -71,9 +76,8 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                   if (controller != null) {
                     artboard.addController(controller!);
                     inputValue = controller?.findInput("input");
-                    inputValue?.change(
-                        (100 / widget.animationtask.totalCount) *
-                            widget.animationtask.completedCount);
+                    inputValue?.change((100 / widget.animationtask.totalCount) *
+                        widget.animationtask.completedCount);
                   }
                 },
               )),
@@ -90,13 +94,15 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                   )),
               FloatingActionButton(
                 onPressed: () {
-                  updatevm.updateCount(widget.animationtask.sId.toString());
-                  updatevm.incrementListCount(widget.index);
+                  updatevm.updateCount(widget.animationtask.sId.toString(), AppUrl.updateCompletedCount);
+                  updatevm.incrementListCount(widget.position);
                   inputValue?.change((100 / widget.animationtask.totalCount) *
-                      (updatevm.list[widget.index]).toInt());
-                  if (updatevm.list[widget.index].toString() ==
+                      (updatevm.list[widget.position]).toInt());
+                  if (updatevm.list[widget.position].toString() ==
                       widget.animationtask.totalCount.toString()) {
-                      updatevm.removeListCount(widget.index);
+                       
+                        updatevm.updateCount(getuserVM.user.value.sId.toString(), AppUrl.updateCompletedTasks);
+                    updatevm.removeListCount(widget.position);
                     Get.toNamed(RouteName.completedanimation);
                   }
                 },
@@ -108,8 +114,9 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                   height: 70.00,
                   width: 70.00,
                   child: Center(
-                    child:
-                        Obx((){ return Text(updatevm.list[widget.index].toString());}),
+                    child: Obx(() {
+                      return Text(updatevm.list[widget.position].toString());
+                    }),
                   ))
             ],
           )

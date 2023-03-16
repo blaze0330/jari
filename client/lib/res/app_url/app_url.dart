@@ -7,8 +7,10 @@ class AppUrl {
   static const String baseUrl = 'http://10.61.8.194:5000/api' ;
   static const String loginApi = '$baseUrl/auth/login' ;
   static const String createUser = '$baseUrl/auth/createuser';
-  static const String updateCompletedCount = '$baseUrl/tasks//updatetask/';
+  static const String updateCompletedCount = '$baseUrl/tasks/updatetask/';
+  static const String updateCompletedTasks = '$baseUrl/auth/updateuser/';
   static const String getUser = '$baseUrl/auth/getuser';
+  static const String getAllUsers = '$baseUrl/auth/getallusers';
   static const String fetchalltasks = '$baseUrl/tasks/fetchalltasks';
   static const String addtask = '$baseUrl/tasks/addtask';
 

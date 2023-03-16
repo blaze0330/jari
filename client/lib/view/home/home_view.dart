@@ -9,6 +9,7 @@ import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/view_models/controller/user_preference/user_prefrence_view_model.dart';
 
 import '../../res/components/internet_exceptions_widget.dart';
+import '../../view_models/controller/all_users/all_users.dart';
 import '../../view_models/controller/home/home_view_models.dart';
 import '../../view_models/controller/update/update_completed_count_view_model.dart';
 
@@ -21,6 +22,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final homeController = Get.put(HomeController());
+  final userController = Get.put(AllUsersController());
   final updatevm = Get.put(UpdateCompleteCountController());
 
   UserPreference userPreference = UserPreference();
@@ -30,13 +32,13 @@ class _HomeViewState extends State<HomeView> {
     // TODO: implement initState
     super.initState();
     homeController.userListApi();
+    userController.AlluserListApi();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFFFFFF),
-
       body: Obx(() {
         switch (homeController.rxRequestStatus.value) {
           case Status.LOADING:
@@ -54,7 +56,6 @@ class _HomeViewState extends State<HomeView> {
               });
             }
           case Status.COMPLETED:
-            
             return SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -84,12 +85,8 @@ class _HomeViewState extends State<HomeView> {
                                 SizedBox(height: 30),
                                 GestureDetector(
                                   onTap: () {
-                                    
                                     Get.toNamed(RouteName.taskanimation,
-                                        arguments: [
-                                          homeController.userList[index].sId
-                                              .toString()
-                                        ]);
+                                        arguments: [index]);
                                   },
                                   child: NeuMorphism(
                                     height: 50,

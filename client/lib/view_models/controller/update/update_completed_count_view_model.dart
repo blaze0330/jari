@@ -37,13 +37,13 @@ class UpdateCompleteCountController extends GetxController {
 
   
 
-  void updateCount(String id) {
+  void updateCount(String id , String initurl) {
     loading.value = true;
     Map<String, String> data = {
      
     };
 
-    String url = AppUrl.updateCompletedCount+id;
+    String url = initurl+id;
 
     _api.updateCompletedCount(jsonEncode(data),id,url).then((value) {
       

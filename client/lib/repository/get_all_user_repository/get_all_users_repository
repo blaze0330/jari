@@ -1,0 +1,21 @@
+import 'package:getx_mvvm/data/network/network_api_services.dart';
+import 'package:getx_mvvm/models/getallusers/get_all_users.dart';
+import 'package:getx_mvvm/res/app_url/app_url.dart';
+
+
+class AllUsersRepository {
+  
+  final _apiService  = NetworkApiServices() ;
+  Future<List<GetAllUserModel>> UserList() async{
+    List<GetAllUserModel> userList = [];
+    dynamic response = await _apiService.getApi(AppUrl.getAllUsers);
+    for (Map<String,dynamic> i in response) {
+     
+        userList.add(GetAllUserModel.fromJson(i));
+    
+      
+      
+    }
+    return userList ;
+  }
+}
