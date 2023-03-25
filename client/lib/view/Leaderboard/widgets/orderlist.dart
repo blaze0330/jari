@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -48,10 +49,16 @@ class _OrderListState extends State<OrderList> {
                                           fontSize: 20
                                         ),),
                                         SizedBox(width: 30,),
-                                        CircleAvatar(
-                                          backgroundImage: NetworkImage(widget.user_List[index].image),
-                                          radius: 30,
-                                        ),
+                                        CachedNetworkImage(
+  imageUrl: widget.user_List[index].image,
+  placeholder: (context, url) => CircularProgressIndicator(),
+  errorWidget: (context, url, error) => Icon(Icons.error),
+  imageBuilder: (context, imageProvider) => CircleAvatar(
+    backgroundImage: imageProvider,
+    radius: 30,
+  ),
+),
+
                                         SizedBox(width: 20,),
                                         Text(
                                             widget.user_List[index].name

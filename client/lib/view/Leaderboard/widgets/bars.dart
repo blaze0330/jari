@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -6,8 +7,10 @@ import 'package:rive/components.dart';
 import '../clipper.dart';
 
 class Bars extends StatefulWidget {
-  var userList;
-  Bars({super.key, this.userList});
+  var newList;
+  List userList = [];
+  Bars({super.key, this.newList});
+  
 
   @override
   State<Bars> createState() => _BarsState();
@@ -18,6 +21,7 @@ class _BarsState extends State<Bars> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    widget.userList = widget.newList.map((element) => element ).toList();
     final temp = widget.userList[0];
     widget.userList[0] = widget.userList[1];
     widget.userList[1] = temp;
@@ -39,8 +43,8 @@ class _BarsState extends State<Bars> {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
-                    itemCount: widget.userList.length < 4
-                        ? widget.userList.length
+                    itemCount: widget.userList!.length < 4
+                        ? widget.userList!.length
                         : 3, //Rxlist can be used without using .value even if we remove it , it's perfectly fine
                     itemBuilder: (context, index) {
                       
@@ -49,11 +53,15 @@ class _BarsState extends State<Bars> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  widget.userList[index].image.toString()),
-                              radius: 40,
-                            ),
+                            CachedNetworkImage(
+  imageUrl: widget.userList[index].image.toString(),
+  placeholder: (context, url) => CircularProgressIndicator(),
+  errorWidget: (context, url, error) => Icon(Icons.error),
+  imageBuilder: (context, imageProvider) => CircleAvatar(
+    backgroundImage: imageProvider,
+    radius: 40,
+  ),
+),
                             AnimatedContainer(
                               duration: const Duration(
                   milliseconds: 370,
