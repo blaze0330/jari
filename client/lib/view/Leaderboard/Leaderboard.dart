@@ -52,7 +52,7 @@ class _LeaderboardState extends State<Leaderboard> {
             children: [
               Expanded(
                 flex: 1,
-                child: Bars(userList: homeController.userList,)
+                child: Bars(newList: homeController.userList,)
                 ),
                 Divider(
                   height: 0,

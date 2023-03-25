@@ -5,10 +5,23 @@ import 'package:get/get.dart';
 import 'package:getx_mvvm/res/assets/image_assets.dart';
 import 'package:getx_mvvm/res/routes/routes_name.dart';
 
-class CompletedTask extends StatelessWidget {
-  const CompletedTask({super.key});
+import '../../view_models/controller/home/home_view_models.dart';
+
+class CompletedTask extends StatefulWidget {
+  final homeController = Get.put(HomeController());
+   CompletedTask({super.key});
 
   @override
+  State<CompletedTask> createState() => _CompletedTaskState();
+}
+
+class _CompletedTaskState extends State<CompletedTask> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.homeController.userListApi();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       

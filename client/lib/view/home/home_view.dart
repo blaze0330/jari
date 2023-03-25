@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 
   @override
   State<HomeView> createState() => _HomeViewState();
-}
+} 
 
 class _HomeViewState extends State<HomeView> {
   final homeController = Get.put(HomeController());
