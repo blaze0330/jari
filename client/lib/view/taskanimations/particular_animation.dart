@@ -96,6 +96,9 @@ class _ParticularAnimationState extends State<ParticularAnimation> {
                 onPressed: () {
                   updatevm.updateCount(widget.animationtask.sId.toString(), AppUrl.updateCompletedCount);
                   updatevm.incrementListCount(widget.position);
+                  setState(() {
+                    
+                  });
                   inputValue?.change((100 / widget.animationtask.totalCount) *
                       (updatevm.list[widget.position]).toInt());
                   if (updatevm.list[widget.position].toString() ==

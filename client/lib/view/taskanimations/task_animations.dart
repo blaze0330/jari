@@ -18,7 +18,7 @@ class TaskAnimations extends StatefulWidget {
 
   @override
   State<TaskAnimations> createState() => _TaskAnimationsState();
-}
+} 
 
 class _TaskAnimationsState extends State<TaskAnimations> {
   final homeController = Get.put(HomeController());
@@ -38,45 +38,51 @@ class _TaskAnimationsState extends State<TaskAnimations> {
 
   @override
   Widget build(BuildContext context) {
-    return  Obx(() {
-        switch (homeController.rxRequestStatus.value) {
-          case Status.LOADING:
-            return const Center(child: CircularProgressIndicator());
-          case Status.ERROR:
-            if (homeController.error.value == 'No internet') {
-              return InterNetExceptionWidget(
-                onPress: () {
-                  homeController.refreshApi();
-                },
-              );
-            } else {
-              return GeneralExceptionWidget(onPress: () {
-                homeController.refreshApi();
-              });
-            } 
-          case Status.COMPLETED:
-            return 
-                
-                homeController.userList.isEmpty? EmptyPage() : PageView.builder(
-                  controller: _controller,
-                
-                  physics: ScrollPhysics(),
-                  
-                                
-                  itemBuilder: (context, index) {
-                    return ParticularAnimation(animationtask: homeController.userList[index],position: index,);
-                  },
-                  itemCount: homeController.userList.length, 
-                  onPageChanged: (value){
-                    
-                    
-                   
-                    
+    return  WillPopScope(
+      onWillPop: () async{
+        Get.offAllNamed(RouteName.homeView);
+        return true;
+      },
+      child: Obx(() {
+          switch (homeController.rxRequestStatus.value) {
+            case Status.LOADING:
+              return const Center(child: CircularProgressIndicator());
+            case Status.ERROR:
+              if (homeController.error.value == 'No internet') {
+                return InterNetExceptionWidget(
+                  onPress: () {
+                    homeController.refreshApi();
                   },
                 );
-             
+              } else {
+                return GeneralExceptionWidget(onPress: () {
+                  homeController.refreshApi();
+                });
+              } 
+            case Status.COMPLETED:
+              return 
+                  
+                  homeController.userList.isEmpty? EmptyPage() : PageView.builder(
+                    controller: _controller,
+                  
+                    physics: ScrollPhysics(),
+                    
+                                  
+                    itemBuilder: (context, index) {
+                      return ParticularAnimation(animationtask: homeController.userList[index],position: index,);
+                    },
+                    itemCount: homeController.userList.length, 
+                    onPageChanged: (value){
+                      
+                      
+                     
+                      
+                    },
+                  );
+               
+          }
         }
-      }
+      ),
     );
   }
 }

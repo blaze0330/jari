@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 
   @override
   State<HomeView> createState() => _HomeViewState();
-} 
+}
 
 class _HomeViewState extends State<HomeView> {
   final homeController = Get.put(HomeController());
@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
+      backgroundColor: Colors.grey[300],
       body: Obx(() {
         switch (homeController.rxRequestStatus.value) {
           case Status.LOADING:
@@ -74,35 +74,38 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   homeController.userList.isEmpty
                       ? EmptyPage()
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          physics: ScrollPhysics(),
-                          itemCount: homeController.userList
-                              .length, //Rxlist can be used without using .value even if we remove it , it's perfectly fine
-                          itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                SizedBox(height: 30),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(RouteName.taskanimation,
-                                        arguments: [index]);
-                                  },
-                                  child: NeuMorphism(
-                                    height: 50,
-                                    width: 350,
-                                    child: Center(
-                                        child: Text(homeController
-                                            .userList[index].title
-                                            .toString())),
+                      : Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            physics: ScrollPhysics(),
+                            itemCount: homeController.userList.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1,
+                              crossAxisSpacing: 30,
+                              mainAxisSpacing: 30,
+                            ),
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(RouteName.taskanimation,
+                                      arguments: [index]);
+                                },
+                                child: NeuMorphism(
+                                  height: 100,
+                                  width: 100,
+                                  child: Center(
+                                    child: Text(homeController
+                                        .userList[index].title
+                                        .toString()),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            );
-                          }),
+                              );
+                            },
+                          ),
+                        )
                 ],
               ),
             );

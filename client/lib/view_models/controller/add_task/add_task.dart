@@ -7,18 +7,17 @@ import 'package:getx_mvvm/repository/addtask/addtask.dart';
 
 import 'package:getx_mvvm/res/routes/routes_name.dart';
 import 'package:getx_mvvm/utils/utils.dart';
+
+import '../home/home_view_models.dart';
  
 class AddTaskController extends GetxController {
   final _api = AddTaskRepository();
-
+   final homeController = Get.put(HomeController());
   final titleController = TextEditingController().obs;
   final totalCountController = TextEditingController().obs;
   final copletedCountController = TextEditingController().obs;
   final animationType = 0.obs;
-  final ayush = "".obs;
-  changeayush(){
-    ayush.value = "sahil";
-  }
+ 
   RxList<double> opacity = [.5,.5,.5].obs;
   toogleOpcaity(int index){
     animationType.value = index;
@@ -52,7 +51,7 @@ class AddTaskController extends GetxController {
      
         Get.delete<AddTaskController>();
    
-        Get.toNamed(RouteName.taskanimation );
+        Get.toNamed(RouteName.taskanimation ,  arguments: [homeController.userList.length + 1]);
       }
     ).onError((error, stackTrace) {
       loading.value = false;
