@@ -28,15 +28,11 @@ class _SelectAnimationState extends State<SelectAnimation> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
-            onTap: () => addtaskVM.changeayush(),
-            child: Center(
-              child:Obx((){return Text(addtaskVM.ayush.toString());}) ,
-            ),
-          ),
-          GestureDetector(
             onTap: () {
               addtaskVM.toogleOpcaity(0);
-          
+              setState(() {
+                
+              });
             },
             child:Obx(() =>  Opacity(
               opacity: addtaskVM.opacity[0],
@@ -51,7 +47,9 @@ class _SelectAnimationState extends State<SelectAnimation> {
           GestureDetector(
             onTap: () {
               addtaskVM.toogleOpcaity(1);
-              
+              setState(() {
+                
+              });
             },
             child:  Opacity(
               opacity: addtaskVM.opacity[1],
@@ -66,7 +64,9 @@ class _SelectAnimationState extends State<SelectAnimation> {
           GestureDetector(
             onTap: () {
               addtaskVM.toogleOpcaity(2);
-              
+              setState(() {
+                
+              });
             },
             child:Obx(() =>  Opacity(
               opacity: addtaskVM.opacity[2],

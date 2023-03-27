@@ -11,22 +11,25 @@ class NeuMorphism extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(50.0),
   width: width,
   height: height,
   decoration: BoxDecoration(
     boxShadow: [
       BoxShadow(
-        color: Colors.white.withOpacity(0.9),
-        offset: Offset(-6.0, -6.0),
+        color: Colors.white,
+        offset: Offset(-4.0, -4.0),
         blurRadius: 16.0,
+        spreadRadius: 1
       ),
       BoxShadow(
-        color: Colors.black.withOpacity(0.2),
-        offset: Offset(6.0, 6.0),
+        color: Colors.grey.shade500,
+        offset: Offset(4.0, 4.0),
         blurRadius: 16.0,
+        spreadRadius: 1
       ),
     ],
-    color: Color(0xFFEFEEEE),
+    color: Colors.grey[300],
     borderRadius: BorderRadius.circular(12.0),
   ),
   child: child,
